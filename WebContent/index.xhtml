@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Argentum web</title>
+</h:head> 
+<h:body> 
+	<h:form>
+		<p:dataTable value="#{argentumBean.negociacoes}" var="negociacao">
+			<p:column headerText="Preço" sortBy="#{negociacao.preco}">
+				<h:outputText value="#{negociacao.preco}" />
+			</p:column>
+			<p:column headerText="Quantidade" sortBy="#{negociacao.quantidade}">
+				<h:outputText value="#{negociacao.quantidade}" />
+			</p:column>
+			<p:column headerText="Volume" sortBy="#{negociacao.volume}">
+				<h:outputText value="#{negociacao.volume}" />
+			</p:column>
+			<p:column headerText="Data" sortBy="#{negociacao.data}">
+				<h:outputText value="#{negociacao.data.time}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body> 
+</html>
