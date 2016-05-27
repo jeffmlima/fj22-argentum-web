@@ -10,7 +10,7 @@ import br.com.caelum.argentum.modelo.Negociacao;
 import br.com.caelum.argentum.reader.LeitorXML;
 
 public class ClienteWebService {
-	private static final String URL_WEBSERVICE = "http://argentumws.caelum.com.br/negociacoes";
+	private static final String URL_WEBSERVICE = "https://argentumws.caelum.com.br/negociacoes";
 
 	public List<Negociacao> getNegociacoes() {
 		HttpURLConnection connection = null;

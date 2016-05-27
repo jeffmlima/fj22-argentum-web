@@ -28,7 +28,7 @@ public class GeradorAleatorioDeXML {
 			
 			for (int negociacao = 0; negociacao < quantidadeNegociacoesDoDia; negociacao++) {
 				
-				// no máximo sobe ou cai R$1,00 e nao baixa além de R$5,00
+				// no mÃ¡ximo sobe ou cai R$1,00 e nao baixa alÃ©m de R$5,00
 				valor += (random.nextInt(200) - 100) / 100;
 				if(valor < 5){
 					valor = 5.0;

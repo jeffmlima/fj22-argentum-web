@@ -62,10 +62,10 @@ public class CandleBuilder {
 		return this;
 	}
 
-	public Candlestick geraCandle() {
+	public Candle geraCandle() {
 		if (!(aberturaTest && fechamentoTest && minimoTest && maximoTest && volumeTest && dataTest)) {
 			throw new IllegalStateException("Todas variáveis devem ser inicializadas");
 		}
-		return new Candlestick(abertura, fechamento, minimo, maximo, volume, data);
+		return new Candle(abertura, fechamento, minimo, maximo, volume, data);
 	}
 }

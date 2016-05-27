@@ -1,15 +1,18 @@
 package br.com.caelum.argentum.modelo;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public final class Negociacao implements Comparable<Negociacao> {
+public final class Negociacao implements Comparable<Negociacao>, Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private final double preco;
 	private final int quantidade;
 	private final Calendar data;
 
 	public Negociacao(double preco, int quantidade, Calendar data) {
 		if (data == null) {
-			throw new IllegalArgumentException("data n„o pode ser nula");
+			throw new IllegalArgumentException("data n√£o pode ser nula");
 		}
 		this.preco = preco;
 		this.quantidade = quantidade;

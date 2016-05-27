@@ -11,7 +11,7 @@ public class CandlestickTest {
 
 	@Test(expected=IllegalArgumentException.class)
 	public void precoMaximoNaoPodeSerMenorQueMinimo() {
-		new Candlestick(10, 20, 20, 10, 1000, Calendar.getInstance());
+		new Candle(10, 20, 20, 10, 1000, Calendar.getInstance());
 	}
 
 	@Test
@@ -22,7 +22,7 @@ public class CandlestickTest {
 		List<Negociacao> negociacoes = Arrays.asList(negociacao1);
 		CandlestickFactory factory = new CandlestickFactory();
 
-		Candlestick candle = factory.constroiCandleParaData(hoje, negociacoes);
+		Candle candle = factory.constroiCandleParaData(hoje, negociacoes);
 		assertTrue(candle.isAlta());
 		assertFalse(candle.isBaixa());
 	}
