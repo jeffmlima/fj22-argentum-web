@@ -8,8 +8,9 @@
 <h:head>
 	<title>Argentum web</title>
 </h:head> 
-<h:body> 
+<h:body>
 	<h:form>
+	<!-- <p:chart type="line" model="#{argentumBean.modeloGrafico}" /> -->
 		<p:dataTable value="#{argentumBean.negociacoes}" var="negociacao" paginator="true" rows="15">
 			<p:column headerText="Preço" sortBy="#{negociacao.preco}">
 				<h:outputText value="#{negociacao.preco}" />
@@ -26,6 +27,7 @@
 				</h:outputText>
 			</p:column>
 		</p:dataTable>
+		<br />
 	</h:form>
 </h:body> 
 </html>
