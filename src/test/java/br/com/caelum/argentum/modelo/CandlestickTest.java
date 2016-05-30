@@ -20,7 +20,7 @@ public class CandlestickTest {
 
 		Negociacao negociacao1 = new Negociacao(40.5, 100, hoje);
 		List<Negociacao> negociacoes = Arrays.asList(negociacao1);
-		CandlestickFactory factory = new CandlestickFactory();
+		CandleFactory factory = new CandleFactory();
 
 		Candle candle = factory.constroiCandleParaData(hoje, negociacoes);
 		assertTrue(candle.isAlta());

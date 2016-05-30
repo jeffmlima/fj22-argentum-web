@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
-public class CandlestickFactory {
+public class CandleFactory {
 
 	public Candle constroiCandleParaData(Calendar data, List<Negociacao> negociacoes) {
 		// double maximo = Double.MIN_VALUE;
