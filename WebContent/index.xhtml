@@ -10,7 +10,7 @@
 </h:head> 
 <h:body>
 	<h:form>
-	<!-- <p:chart type="line" model="#{argentumBean.modeloGrafico}" /> -->
+		<!-- <p:chart type="line" model="#{argentumBean.modeloGrafico}" /> --><br />
 		<p:dataTable value="#{argentumBean.negociacoes}" var="negociacao" paginator="true" rows="15">
 			<p:column headerText="Preço" sortBy="#{negociacao.preco}">
 				<h:outputText value="#{negociacao.preco}" />
