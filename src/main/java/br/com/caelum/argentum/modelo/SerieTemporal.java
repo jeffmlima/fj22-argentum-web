@@ -21,11 +21,7 @@ public class SerieTemporal {
 	public Candle getCandle(int i){
 		return this.candles.get(i);
 	}
-	
-	public int getTotal(){
-		return this.candles.size();
-	}
-	
+		
 	public int getUltimaPosicao(){
 		return this.candles.size()-1;
 	}

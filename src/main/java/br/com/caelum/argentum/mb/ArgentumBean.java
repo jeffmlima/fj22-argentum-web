@@ -11,6 +11,7 @@ import org.primefaces.model.chart.ChartModel;
 import org.primefaces.model.chart.LineChartModel;
 
 import br.com.caelum.argentum.grafico.GeradorModeloGrafico;
+import br.com.caelum.argentum.indicadores.IndicadorFechamento;
 import br.com.caelum.argentum.indicadores.MediaMovelSimples;
 import br.com.caelum.argentum.modelo.Candle;
 import br.com.caelum.argentum.modelo.CandleFactory;
@@ -22,8 +23,8 @@ import br.com.caelum.argentum.reader.LeitorXML;
 public class ArgentumBean {
 	
 	private List<Negociacao> negociacoes;
-	private String indicadorBase;
-	private String media;
+//	private String indicadorBase;
+//	private String media;
 	private ChartModel modeloGrafico = new LineChartModel();
 	
 	public ArgentumBean() {
@@ -31,7 +32,8 @@ public class ArgentumBean {
 		List<Candle> candles = new CandleFactory().constroiCandles(negociacoes);
 		SerieTemporal serie = new SerieTemporal(candles);
 		GeradorModeloGrafico geradorGrafico = new GeradorModeloGrafico(serie, 2, serie.getUltimaPosicao());
-		geradorGrafico.plotaIndicador(new MediaMovelSimples(3));/*plotaMediaMovelSimples()*/;
+//		geradorGrafico.plotaMediaMovelSimples();
+		geradorGrafico.plotaIndicador(new MediaMovelSimples(new IndicadorFechamento(), 3));
 		this.modeloGrafico = geradorGrafico.getChartModel();
 	}
 
