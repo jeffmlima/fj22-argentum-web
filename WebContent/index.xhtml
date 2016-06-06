@@ -10,7 +10,22 @@
 </h:head> 
 <h:body>
 	<h:form>
-		<!-- <p:chart type="line" model="#{argentumBean.modeloGrafico}" /> --> <br />
+		<h:panelGrid columns="5">
+			<h:outputLabel value="Média Móvel:" />
+			<p:selectOneButton value="#{argentumBean.media}">
+				<f:selectItem itemValue="MediaMovelSimples" itemLabel="Simples"/>
+				<f:selectItem itemValue="MediaMovelPonderada" itemLabel="Ponderada"/>
+			</p:selectOneButton>
+			
+			<h:outputLabel value="Indicador base:" />
+			<p:selectOneButton value="#{argentumBean.indicadorBase}">
+				<f:selectItem itemValue="IndicadorAbertura" itemLabel="Abertura"/>
+				<f:selectItem itemValue="IndicadorFechamento" itemLabel="Fechamento"/>
+			</p:selectOneButton>
+			
+			<p:commandButton value="Gerar gráfico" action="#{argentumBean.geraGrafico}" update="grafico" />
+		</h:panelGrid>
+		<p:chart type="line" model="#{argentumBean.modeloGrafico}" id="grafico" /> <br />
 		<p:dataTable value="#{argentumBean.negociacoes}" var="negociacao" paginator="true" rows="15">
 			<p:column headerText="Preço" sortBy="#{negociacao.preco}">
 				<h:outputText value="#{negociacao.preco}" />

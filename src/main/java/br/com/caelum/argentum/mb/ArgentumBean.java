@@ -11,6 +11,7 @@ import org.primefaces.model.chart.ChartModel;
 import org.primefaces.model.chart.LineChartModel;
 
 import br.com.caelum.argentum.grafico.GeradorModeloGrafico;
+import br.com.caelum.argentum.indicadores.Indicador;
 import br.com.caelum.argentum.indicadores.IndicadorFechamento;
 import br.com.caelum.argentum.indicadores.MediaMovelSimples;
 import br.com.caelum.argentum.modelo.Candle;
@@ -23,12 +24,17 @@ import br.com.caelum.argentum.reader.LeitorXML;
 public class ArgentumBean {
 	
 	private List<Negociacao> negociacoes;
-//	private String indicadorBase;
-//	private String media;
+	private String indicadorBase;
+	private String media;
 	private ChartModel modeloGrafico = new LineChartModel();
 	
 	public ArgentumBean() {
 		this.negociacoes = carregaNegociacoesTeste()/*new ClienteWebService().getNegociacoes()*/;
+		geraGrafico();
+	}
+
+	public void geraGrafico() {
+		System.out.println("Plotando: "+ media + " de "+indicadorBase);
 		List<Candle> candles = new CandleFactory().constroiCandles(negociacoes);
 		SerieTemporal serie = new SerieTemporal(candles);
 		GeradorModeloGrafico geradorGrafico = new GeradorModeloGrafico(serie, 2, serie.getUltimaPosicao());
@@ -43,6 +49,11 @@ public class ArgentumBean {
 	
 	public ChartModel getModeloGrafico() {
 		return modeloGrafico;
+	}
+	
+	@SuppressWarnings("unused")
+	private Indicador defineIndicador(){
+		return null;
 	}
 	
 	private List<Negociacao> carregaNegociacoesTeste(){
@@ -131,6 +142,22 @@ public class ArgentumBean {
 		LeitorXML leitor = new LeitorXML();
 		InputStream inputStream = new ByteArrayInputStream(xmlDeTeste.getBytes());
 		return leitor.carrega(inputStream);
+	}
+
+	public String getIndicadorBase() {
+		return indicadorBase;
+	}
+
+	public void setIndicadorBase(String indicadorBase) {
+		this.indicadorBase = indicadorBase;
+	}
+
+	public String getMedia() {
+		return media;
+	}
+
+	public void setMedia(String media) {
+		this.media = media;
 	}
 
 }
