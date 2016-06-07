@@ -13,11 +13,13 @@ public class GeradorModeloGrafico {
 	private int comeco;
 	private int fim;
 	private LineChartModel modeloGrafico;
+	private String tituloGrafico;
 
-	public GeradorModeloGrafico(SerieTemporal serie, int comeco, int fim) {
+	public GeradorModeloGrafico(SerieTemporal serie, int comeco, int fim, String tituloGrafico) {
 		this.serie = serie;
 		this.comeco = comeco;
 		this.fim = fim;
+		this.tituloGrafico = tituloGrafico;
 		this.modeloGrafico = new LineChartModel();
 	}
 
@@ -43,7 +45,7 @@ public class GeradorModeloGrafico {
 		}
 		this.modeloGrafico.addSeries(chartSeries);
 		this.modeloGrafico.setLegendPosition("w");
-		this.modeloGrafico.setTitle("Indicadores");
+		this.modeloGrafico.setTitle(tituloGrafico);
 	}
 	
 	public ChartModel getChartModel(){

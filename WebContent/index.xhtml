@@ -10,7 +10,11 @@
 </h:head> 
 <h:body>
 	<h:form>
-		<h:panelGrid columns="5">
+		<p:messages autoUpdate="true" />
+		<h:panelGrid columns="7">
+			<h:outputLabel value="Título:" for="titulo" />
+			<p:inputText value="#{argentumBean.tituloGrafico}" id="titulo" required="true" />
+		
 			<h:outputLabel value="Média Móvel:" />
 			<p:selectOneButton value="#{argentumBean.media}">
 				<f:selectItem itemValue="MediaMovelSimples" itemLabel="Simples"/>

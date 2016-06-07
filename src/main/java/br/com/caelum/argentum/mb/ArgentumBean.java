@@ -25,6 +25,7 @@ public class ArgentumBean {
 	private String indicadorBase;
 	private String media;
 	private ChartModel modeloGrafico = new LineChartModel();
+	private String tituloGrafico;
 	
 	public ArgentumBean() {
 		this.negociacoes = carregaNegociacoesTeste()/*new ClienteWebService().getNegociacoes()*/;
@@ -35,7 +36,7 @@ public class ArgentumBean {
 		System.out.println("Plotando: "+ media + " de "+indicadorBase);
 		List<Candle> candles = new CandleFactory().constroiCandles(negociacoes);
 		SerieTemporal serie = new SerieTemporal(candles);
-		GeradorModeloGrafico geradorGrafico = new GeradorModeloGrafico(serie, 2, serie.getUltimaPosicao());
+		GeradorModeloGrafico geradorGrafico = new GeradorModeloGrafico(serie, 2, serie.getUltimaPosicao(), tituloGrafico);
 //		geradorGrafico.plotaMediaMovelSimples();
 //		geradorGrafico.plotaIndicador(new MediaMovelSimples(new IndicadorFechamento(), 3));
 //		geradorGrafico.plotaIndicador(defineIndicador());
@@ -170,6 +171,14 @@ public class ArgentumBean {
 		LeitorXML leitor = new LeitorXML();
 		InputStream inputStream = new ByteArrayInputStream(xmlDeTeste.getBytes());
 		return leitor.carrega(inputStream);
+	}
+
+	public String getTituloGrafico() {
+		return tituloGrafico;
+	}
+
+	public void setTituloGrafico(String tituloGrafico) {
+		this.tituloGrafico = tituloGrafico;
 	}
 
 }
