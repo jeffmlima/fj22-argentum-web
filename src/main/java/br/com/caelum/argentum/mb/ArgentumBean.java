@@ -11,9 +11,7 @@ import org.primefaces.model.chart.ChartModel;
 import org.primefaces.model.chart.LineChartModel;
 
 import br.com.caelum.argentum.grafico.GeradorModeloGrafico;
-import br.com.caelum.argentum.indicadores.Indicador;
-import br.com.caelum.argentum.indicadores.IndicadorFechamento;
-import br.com.caelum.argentum.indicadores.MediaMovelSimples;
+import br.com.caelum.argentum.indicadores.IndicadorFactory;
 import br.com.caelum.argentum.modelo.Candle;
 import br.com.caelum.argentum.modelo.CandleFactory;
 import br.com.caelum.argentum.modelo.Negociacao;
@@ -39,9 +37,28 @@ public class ArgentumBean {
 		SerieTemporal serie = new SerieTemporal(candles);
 		GeradorModeloGrafico geradorGrafico = new GeradorModeloGrafico(serie, 2, serie.getUltimaPosicao());
 //		geradorGrafico.plotaMediaMovelSimples();
-		geradorGrafico.plotaIndicador(new MediaMovelSimples(new IndicadorFechamento(), 3));
+//		geradorGrafico.plotaIndicador(new MediaMovelSimples(new IndicadorFechamento(), 3));
+//		geradorGrafico.plotaIndicador(defineIndicador());
+		geradorGrafico.plotaIndicador(new IndicadorFactory(media, indicadorBase).defineIndicador());
 		this.modeloGrafico = geradorGrafico.getChartModel();
 	}
+
+	/*private Indicador defineIndicador() {
+		if (indicadorBase == null || media == null)
+			return new MediaMovelSimples(new IndicadorFechamento(), 3);
+		try {
+			String pacote = "br.com.caelum.argentum.indicadores.";
+			Class<?> classeIndicadorBase = Class.forName(pacote+indicadorBase);
+			Indicador indicadorBase = (Indicador) classeIndicadorBase.newInstance();
+			
+			Class<?> classeMedia = Class.forName(pacote+media);
+			Constructor<?> constructorMedia = classeMedia.getConstructor(Indicador.class, int.class);
+			Indicador indicador = (Indicador) constructorMedia.newInstance(indicadorBase, 3);
+			return indicador;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}*/
 
 	public List<Negociacao> getNegociacoes() {
 		return negociacoes;
@@ -51,9 +68,20 @@ public class ArgentumBean {
 		return modeloGrafico;
 	}
 	
-	@SuppressWarnings("unused")
-	private Indicador defineIndicador(){
-		return null;
+	public String getIndicadorBase() {
+		return indicadorBase;
+	}
+	
+	public void setIndicadorBase(String indicadorBase) {
+		this.indicadorBase = indicadorBase;
+	}
+	
+	public String getMedia() {
+		return media;
+	}
+	
+	public void setMedia(String media) {
+		this.media = media;
 	}
 	
 	private List<Negociacao> carregaNegociacoesTeste(){
@@ -142,22 +170,6 @@ public class ArgentumBean {
 		LeitorXML leitor = new LeitorXML();
 		InputStream inputStream = new ByteArrayInputStream(xmlDeTeste.getBytes());
 		return leitor.carrega(inputStream);
-	}
-
-	public String getIndicadorBase() {
-		return indicadorBase;
-	}
-
-	public void setIndicadorBase(String indicadorBase) {
-		this.indicadorBase = indicadorBase;
-	}
-
-	public String getMedia() {
-		return media;
-	}
-
-	public void setMedia(String media) {
-		this.media = media;
 	}
 
 }
