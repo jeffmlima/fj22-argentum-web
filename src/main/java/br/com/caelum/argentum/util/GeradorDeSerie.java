@@ -1,4 +1,4 @@
-package br.com.caelum.argentum.indicadores;
+package br.com.caelum.argentum.util;
 
 import java.util.ArrayList;
 import java.util.Calendar;

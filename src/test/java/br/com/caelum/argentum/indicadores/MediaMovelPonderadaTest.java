@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import br.com.caelum.argentum.modelo.SerieTemporal;
+import br.com.caelum.argentum.util.GeradorDeSerie;
 
 public class MediaMovelPonderadaTest {
 

@@ -2,7 +2,7 @@ package br.com.caelum.argentum.modelo;
 
 import org.junit.Test;
 
-import br.com.caelum.argentum.indicadores.GeradorDeSerie;
+import br.com.caelum.argentum.util.GeradorDeSerie;
 
 public class SerieTemporalTest {
 

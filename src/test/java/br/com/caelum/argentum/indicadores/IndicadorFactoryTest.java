@@ -9,7 +9,7 @@ public class IndicadorFactoryTest {
 	@Test
 	public void defineIndicadorTest() {
 		assertEquals(new MediaMovelSimples(new IndicadorFechamento(), 3),
-				new IndicadorFactory("MediaMovelSimples",null).defineIndicador());
+				new IndicadorFactory("MediaMovelSimples","IndicadorFechamento").defineIndicador());
 	}
 
 }
